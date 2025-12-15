@@ -22,13 +22,28 @@ button{
     padding: 10px 20px;
     border-radius: 15px;
     border: 2px solid rgba(0,0,0,0.5);
-    box-shadow: 2px 2px 10pxrgba(0,0,0,0.5);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     color: white;
     background-color: blueviolet;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
-button:hover{
+button:hover,
+button:focus{
     background-color: rgb(97, 33, 157);
+    transform: translateY(-3px);
+    box-shadow: 4px 6px 12px rgba(0,0,0,0.25);
 }
+button:active{
+    transform: translateY(-1px);
+}
+
+/* transición general para enlaces, logo y elementos interactivos */
+a, header .logo, .colorXacento, .colorXXacento, #Mapa li, #LDT .carta {
+    transition: color 0.22s ease, background-color 0.22s ease, transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+/* Cabecera */
 .container{
     max-width: 1400px;
     margin: auto;
@@ -37,7 +52,8 @@ button:hover{
     color:blueviolet ;
 }
 header{
-    background-color: rgb(245), (245), (245);
+    /* corregido: antes tenía comas mal puestas */
+    background-color: rgb(245,245,245);
 }
 header .logo{
     margin: 0;
@@ -45,6 +61,11 @@ header .logo{
     font-weight: bold;
     color: blueviolet;
     font-size: 1.6em;
+    cursor: default;
+}
+header .logo:hover{
+    color: rgb(120,60,200);
+    transform: translateY(-2px);
 }
 
 header .container{
@@ -57,17 +78,21 @@ header nav{
     flex-direction: column;
     text-align: center;
     padding-bottom: 25px;
-
 }
 header a{
     padding: 5px 12px;
     text-decoration:none;
     font-weight: bold;
     color: black;
+    cursor: pointer;
 }
-header a:hover{
+header a:hover,
+header a:focus{
     color: blueviolet;
+    transform: translateY(-2px);
 }
+
+/* Hero */
 #hero{
     display: flex;
     align-items: center;
@@ -88,13 +113,17 @@ header a:hover{
 }
 #hero h1{
     color: white;
-
+}
+#hero h1:hover{
+    color: #f0e8ff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 #hero button{
     font-size: 1.75em;
 }
 
+/* Introducción a la LDT */
 #InLDT .container{
     text-align: center ;
     padding: 200px 12px;
@@ -106,16 +135,14 @@ header a:hover{
     text-align: center;
 }
 
+/* Línea de tiempo */
 #LDT .container{
     padding: 100px 12px;
-
 }
-
 #LDT h2{
     margin-top: 0;
     font-size: 3em;
 }
-
 #LDT p{
     display: none;
 }
@@ -125,6 +152,13 @@ header a:hover{
     padding: 50px ;
     margin: 20px;
     border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+#LDT .carta:hover{
+    filter: brightness(0.95);
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
 #LDT{
@@ -146,12 +180,14 @@ header a:hover{
     background-position: center center;
 }
 
-
 .colorXXacento{
     color:black;
 }
+.colorXXacento:hover{
+    color: rgb(60,60,60);
+}
 
-
+/* Mapa / lista de habitats */
 #Mapa{
     display: flex;
     align-items: center;
@@ -179,9 +215,14 @@ header a:hover{
 #Mapa li{
     margin: 12px 0px;
     font-weight: bold;
+    cursor: pointer;
+}
+#Mapa li:hover{
+    color: blueviolet;
+    transform: translateX(6px);
 }
 
-
+/* Sección final / footer */
 #final{
     display: flex;
     flex-direction: column;
@@ -210,11 +251,21 @@ header a:hover{
     padding: 12px;
     color: rgb(100,100,100);
 }
+#footer p:hover{
+    color: rgb(60,60,60);
+}
 
-
+/* Footer container */
 #footer .container{
     height: 150px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+
+/* Accesibilidad: focus visible */
+a:focus, button:focus, .carta:focus {
+    outline: 3px solid rgba(106,13,173,0.18);
+    outline-offset: 3px;
+    border-radius: 6px;
 }
